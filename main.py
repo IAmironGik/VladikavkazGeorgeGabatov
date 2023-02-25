@@ -5,6 +5,8 @@ from PyQt5.QtGui import QPainter
 from PyQt5.QtGui import QPen
 from PyQt5.QtWidgets import QWidget, QApplication, QPushButton
 
+import random
+
 
 class Example(QWidget):
 
@@ -28,8 +30,10 @@ class Example(QWidget):
         if self.do_paint:
             qp = QPainter()
             qp.begin(self)
-            qp.setPen(QPen(Qt.yellow, 8, Qt.SolidLine))
-            qp.drawEllipse(40, 40, 400, 400)
+            color = [Qt.yellow, Qt.red, Qt.green, Qt.blue, Qt.black, Qt.darkBlue]
+            qp.setPen(QPen(random.choice(color), 8, Qt.SolidLine))
+            x = random.randint(200, 401)
+            qp.drawEllipse(40, 40, x, x)
             qp.end()
 
     def paint(self):
